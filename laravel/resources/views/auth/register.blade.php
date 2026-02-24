@@ -9,7 +9,7 @@
         </p>
     </div>
 
-    <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}">
+    <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="rounded-md shadow-sm space-y-4">
@@ -38,6 +38,19 @@
                     class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
                     placeholder="nom@exemple.com">
                 <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs text-red-500" />
+            </div>
+
+            <div class="mt-4">
+                <label for="photo" class="block text-sm font-medium text-gray-700">Photo de profil (Optionnel)</label>
+                <input id="photo" name="photo" type="file" 
+                    class="mt-1 block w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-lg file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-indigo-50 file:text-indigo-700
+                    hover:file:bg-indigo-100
+                    border border-gray-300 rounded-lg bg-gray-50 focus:outline-none cursor-pointer" />
+                <x-input-error :messages="$errors->get('photo')" class="mt-2 text-xs text-red-500" />
             </div>
 
             <div>
