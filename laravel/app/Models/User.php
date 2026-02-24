@@ -26,6 +26,16 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function person()
+    {
+        return $this->hasOne(Person::class);
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
