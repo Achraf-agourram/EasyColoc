@@ -14,4 +14,14 @@ class Expense extends Model
         'amount',
         'category',
     ];
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
