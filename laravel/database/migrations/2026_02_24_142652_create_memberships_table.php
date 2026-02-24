@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('memberships', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('membershipId');
+            $table->string('role');
+            $table->timestamps('joinedAt');
+            $table->dateTime('leftAt')->nullable();
+            $table->boolean('isActive')->default(true);
+
+            $table->foreignId('person_id')->constrained('persons')->cascadeOnDelete();
+            $table->foreignId('colocation_id')->constrained('colocations')->cascadeOnDelete();
         });
     }
 
