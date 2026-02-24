@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('userId')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
 
             $table->boolean('isOwner')->default(false);
             $table->boolean('banned')->default(false);
