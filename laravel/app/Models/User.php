@@ -36,6 +36,21 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    public function memberships()
+    {
+        return $this->hasMany(Membership::class);
+    }
+
+    public function colocations()
+    {
+        return $this->hasMany(Colocation::class, 'owner_id');
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
