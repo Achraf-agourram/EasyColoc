@@ -12,4 +12,14 @@ class Colocation extends Model
     protected $fillable = [
         'token',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo(Person::class, 'owner_id');
+    }
+
+    public function memberships()
+    {
+        return $this->hasMany(Membership::class);
+    }
 }
