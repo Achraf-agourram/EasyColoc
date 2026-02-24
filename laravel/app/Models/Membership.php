@@ -12,4 +12,14 @@ class Membership extends Model
     protected $fillable = [
         'role',
     ];
+
+    public function person()
+    {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function colocation()
+    {
+        return $this->belongsTo(Colocation::class);
+    }
 }
