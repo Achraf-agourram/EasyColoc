@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('memberships', function (Blueprint $table) {
-            $table->id('membershipId');
+            $table->id();
             $table->string('role');
-            $table->timestamps('joinedAt');
+            $table->dateTime('joinedAt');
             $table->dateTime('leftAt')->nullable();
             $table->boolean('isActive')->default(true);
 
