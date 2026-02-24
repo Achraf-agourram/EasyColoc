@@ -1,52 +1,68 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    
+    <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900">
+            Créer un compte
+        </h2>
+        <p class="mt-2 text-sm text-gray-600">
+            Rejoignez la colocation et gérez vos dépenses facilement.
+        </p>
+    </div>
+
+    <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- Name -->
+        <div class="rounded-md shadow-sm space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                <input id="name" name="name" type="text" autocomplete="name" required autofocus
+                    value="{{ old('name') }}"
+                    class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
+                    placeholder="Jean Dupont">
+                <x-input-error :messages="$errors->get('name')" class="mt-2 text-xs text-red-500" />
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Adresse Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required 
+                    value="{{ old('email') }}"
+                    class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
+                    placeholder="nom@exemple.com">
+                <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs text-red-500" />
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" required 
+                    class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
+                    placeholder="••••••••">
+                <x-input-error :messages="$errors->get('password')" class="mt-2 text-xs text-red-500" />
+            </div>
+
+            <div>
+                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
+                <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required 
+                    class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
+                    placeholder="••••••••">
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-xs text-red-500" />
+            </div>
+        </div>
+
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+            <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out shadow-md hover:shadow-lg">
+                S'inscrire
+            </button>
         </div>
     </form>
+
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600">
+            Déjà un compte ? 
+            <a href="{{ route('login') }}" class="font-bold text-indigo-600 hover:text-indigo-500 underline decoration-indigo-200 underline-offset-4">
+                Se connecter
+            </a>
+        </p>
+    </div>
+
+
 </x-guest-layout>
