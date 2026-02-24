@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('colocations', function (Blueprint $table) {
             $table->id();
+            $table->string('token')->unique();
+            $table->boolean('is_active')->default(true);
+            
+            $table->foreignId('owner_id')->constrained('persons')->cascadeOnDelete();
             $table->timestamps();
         });
     }
