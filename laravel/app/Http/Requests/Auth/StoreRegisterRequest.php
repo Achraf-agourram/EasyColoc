@@ -22,7 +22,22 @@ class StoreRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'firstName' => ['required','string','min:2','max:50'],
+            'lastName' => ['required','string','min:2','max:50'],
+            'email' => ['required','email','max:100','unique:users,email'],
+            'photo' => ['nullable','image','mimes:jpg,jpeg,png','max:2048'],
+            'password' => ['required','string','min:8','confirmed'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'firstName.required' => 'First name is required',
+            'lastName.required' => 'Last name is required',
+            'email.unique' => 'Email already exists',
+            'password.confirmed' => 'Passwords do not match',
+            'photo.image' => 'Photo must be an image'
         ];
     }
 }

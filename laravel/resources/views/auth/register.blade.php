@@ -14,8 +14,17 @@
 
         <div class="rounded-md shadow-sm space-y-4">
             <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Nom complet</label>
-                <input id="name" name="name" type="text" autocomplete="name" required autofocus
+                <label for="fname" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                <input id="fname" name="firstName" type="text" autocomplete="name" required autofocus
+                    value="{{ old('name') }}"
+                    class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
+                    placeholder="Jean Dupont">
+                <x-input-error :messages="$errors->get('name')" class="mt-2 text-xs text-red-500" />
+            </div>
+
+            <div>
+                <label for="lname" class="block text-sm font-medium text-gray-700">Nom complet</label>
+                <input id="lname" name="lastName" type="text" autocomplete="name" required autofocus
                     value="{{ old('name') }}"
                     class="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-200 bg-gray-50" 
                     placeholder="Jean Dupont">
