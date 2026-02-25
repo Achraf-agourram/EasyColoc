@@ -30,7 +30,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreRegisterRequest $request)//: RedirectResponse
+    public function store(StoreRegisterRequest $request): RedirectResponse
     {
         $photoPath = $request->file('photo')->store('images', 'public');
 
@@ -48,6 +48,6 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
         Auth::login($user);
         
-        return redirect(route('/', absolute: false));
+        return redirect(route('/home', absolute: false));
     }
 }
