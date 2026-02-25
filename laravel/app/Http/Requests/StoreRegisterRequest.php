@@ -25,7 +25,7 @@ class StoreRegisterRequest extends FormRequest
             'firstName' => ['required','string','min:2','max:50'],
             'lastName' => ['required','string','min:2','max:50'],
             'email' => ['required','email','max:100','unique:users,email'],
-            'photo' => ['nullable','image','mimes:jpg,jpeg,png','max:2048'],
+            'photo' => ['required','image','mimes:jpg,jpeg,png','max:2048'],
             'password' => ['required','string','min:8','confirmed'],
         ];
     }

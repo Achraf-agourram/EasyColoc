@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRegisterRequest;
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -28,19 +30,24 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreRegisterRequest $request): RedirectResponse
+    public function store(StoreRegisterRequest $request)//: RedirectResponse
     {
+        $photoPath = $request->file('photo')->store('images', 'public');
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
+        $user = User::create([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'email' => $request->email,
+            'photo' => $photoPath,
+            'password' => $request->password,
+        ]);
 
-        // event(new Registered($user));
+        if (!Admin::exists()) $user->admin()->create();
+        else $user->person()->create();
 
-        // Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        event(new Registered($user));
+        Auth::login($user);
+        
+        return redirect(route('/', absolute: false));
     }
 }
