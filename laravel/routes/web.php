@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/mycolocation', [ColocationController::class, 'mycolocation']);
     Route::get('/mycolocation/new', [ColocationController::class, 'colocationForm']);
+    Route::post('/addColocation', [ColocationController::class, 'createColocation']);
 });
 
 require __DIR__.'/auth.php';

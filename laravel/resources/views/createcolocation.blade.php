@@ -7,7 +7,7 @@
                     <h2 class="text-2xl font-bold italic">🏠 Configurer ma colocation</h2>
                 </div>
 
-                <form method="POST" action="/addColocation" class="p-8 space-y-8">
+                <form method="POST" action="/addColocation" class="p-8 space-y-6">
                     @csrf
 
                     <div>
@@ -19,15 +19,15 @@
                     </div>
 
                     <div>
-                        <label for="address" class="block text-sm font-semibold text-gray-700 mb-2">Adresse physique</label>
-                        <input name="address" id="address" rows="3" required
+                        <label for="adress" class="block text-sm font-semibold text-gray-700 mb-2">Adresse physique</label>
+                        <input name="adress" id="address" rows="3" required
                                   class="block w-full px-4 py-4 rounded-xl border-gray-300 bg-gray-50 border focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200"
                                   placeholder="Rue, Code Postal, Ville..."></input>
                         <x-input-error :messages="$errors->get('address')" class="mt-2 text-xs text-red-500" />
                     </div>
 
                     <div class="flex items-center justify-between pt-6">
-                        <a href="#" class="text-sm font-bold text-gray-400 hover:text-gray-600 transition">
+                        <a href="/mycolocation" class="text-sm font-bold text-gray-400 hover:text-gray-600 transition">
                             Annuler
                         </a>
                         <button type="submit" 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreColocationRequest;
 use Illuminate\Http\Request;
 
 class ColocationController extends Controller
@@ -16,5 +17,10 @@ class ColocationController extends Controller
     public function colocationForm ()
     {
         return view('createcolocation');
+    }
+
+    public function createColocation (StoreColocationRequest $request)
+    {
+        return "validated";
     }
 }
