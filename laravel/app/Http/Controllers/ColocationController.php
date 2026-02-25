@@ -8,6 +8,8 @@ class ColocationController extends Controller
 {
     public function mycolocation ()
     {
-        return view('mycolocation');
+        $activeMemberships = auth()->user()->memberships()->where('isActive', true)->get();
+
+        return view('mycolocation', compact('activeMemberships'));
     }
 }

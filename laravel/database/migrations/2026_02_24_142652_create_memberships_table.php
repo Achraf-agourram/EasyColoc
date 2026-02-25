@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('leftAt')->nullable();
             $table->boolean('isActive')->default(true);
 
-            $table->foreignId('person_id')->constrained('people')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('people')->cascadeOnDelete();
             $table->foreignId('colocation_id')->constrained('colocations')->cascadeOnDelete();
         });
     }

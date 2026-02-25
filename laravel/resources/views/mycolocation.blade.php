@@ -26,6 +26,11 @@
                     </svg>
                     Créer ma colocation
                 </a>
+
+                <button
+                   class="inline-flex items-center px-8 py-4 bg-indigo-600 border border-transparent rounded-xl font-bold text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150 shadow-lg shadow-indigo-100">
+                    Rejoindre une colocation
+                </button>
             </div>
 
         </div>
