@@ -12,4 +12,9 @@ class ColocationController extends Controller
 
         return view('mycolocation', compact('activeMemberships'));
     }
+
+    public function colocationForm ()
+    {
+        return view('createcolocation');
+    }
 }
