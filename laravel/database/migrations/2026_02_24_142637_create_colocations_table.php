@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('token')->unique();
             $table->boolean('is_active')->default(true);
             
-            $table->foreignId('owner_id')->constrained('persons')->cascadeOnDelete();
+            $table->foreignId('owner_id')->constrained('people')->cascadeOnDelete();
             $table->timestamps();
         });
     }
