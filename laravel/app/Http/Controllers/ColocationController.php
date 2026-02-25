@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class ColocationController extends Controller
 {
-    public function home ()
+    public function mycolocation ()
     {
-        return view('home');
+        return view('mycolocation');
     }
 }
