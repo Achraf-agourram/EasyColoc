@@ -39,7 +39,7 @@
                         <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
                             <div class="flex items-center bg-green-50 px-3 py-1 rounded-full border border-green-100">
                                 <span class="text-xs font-black text-green-700 uppercase mr-1">Réputation:</span>
-                                <span class="text-sm font-bold text-green-600">0</span> </div>
+                                <span class="text-sm font-bold text-green-600">{{ Auth::user()->reputation }}</span> </div>
 
                             <div class="ms-3 relative" x-data="{ dropdownOpen: false }">
                                 <button @click="dropdownOpen = !dropdownOpen" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
