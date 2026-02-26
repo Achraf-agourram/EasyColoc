@@ -3,8 +3,8 @@
         
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 pb-6 border-b border-gray-100 gap-4">
             <div>
-                <h1 class="text-3xl font-black text-gray-900 italic">name</h1>
-                <p class="text-gray-500 text-sm mt-1">address</p>
+                <h1 class="text-3xl font-black text-gray-900 italic">{{ $colocation->name }}</h1>
+                <p class="text-gray-500 text-sm mt-1">{{ $colocation->address }}</p>
             </div>
             
             <div class="flex space-x-3">
