@@ -94,6 +94,7 @@
                     <h3 class="font-black text-gray-800 uppercase text-xs tracking-widest mb-6">👥 Les Colocataires</h3>
                     
                     <div class="space-y-6">
+
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black shadow-inner">
@@ -111,9 +112,10 @@
                                 <p class="text-[8px] text-gray-400 uppercase font-bold">Réputation</p>
                             </div>
                         </div>
+                        
                     </div>
 
-                    @if(Auth::user()->person->isOwner)
+                    @if($membership->role === 'owner')
                         <div class="mt-8 pt-6 border-t border-gray-100">
                             <button class="w-full py-3 bg-gray-50 text-indigo-600 font-black text-[10px] uppercase tracking-widest rounded-xl border-2 border-dashed border-indigo-100 hover:bg-indigo-50 hover:border-indigo-300 transition">
                                 + Inviter un membre
