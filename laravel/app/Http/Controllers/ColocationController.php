@@ -26,21 +26,25 @@ class ColocationController extends Controller
 
     public function createColocation (StoreColocationRequest $request)
     {
-        $createdColocation = Colocation::create([
-            'name' => $request->name,
-            'address' => $request->address,
-            'token' => Colocation::generateToken(),
-            'owner_id' => Auth::id(),
-        ]);
+        $activeMembership = auth()->user()->memberships()->where('isActive', true)->first();
 
-        Membership::create([
-            'role' => 'owner',
-            'joinedAt' => Carbon::today(),
-            'user_id' => Auth::id(),
-            'colocation_id' => $createdColocation->id,
-        ]);
+        if (!$activeMembership) {
+            $createdColocation = Colocation::create([
+                'name' => $request->name,
+                'address' => $request->address,
+                'token' => Colocation::generateToken(),
+                'owner_id' => Auth::id(),
+            ]);
 
-        if (Auth::user()->person) Auth::user()->person->update(['isOwner' => true]);
+            Membership::create([
+                'role' => 'owner',
+                'joinedAt' => Carbon::today(),
+                'user_id' => Auth::id(),
+                'colocation_id' => $createdColocation->id,
+            ]);
+
+            if (Auth::user()->person) Auth::user()->person->update(['isOwner' => true]);
+        }
 
         return redirect('/mycolocation');
     }

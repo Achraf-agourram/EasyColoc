@@ -37,9 +37,9 @@
                         <hr class="border-gray-100 mb-8">
 
                         <div class="flex flex-wrap gap-4">
-                            <button class="flex-1 bg-indigo-600 text-white text-center py-4 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
+                            <a href="/mycolocation/{{ $activeMembership->colocation->token }}" class="flex-1 bg-indigo-600 text-white text-center py-4 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
                                 Accéder à la colocation et gérer les dépenses
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
