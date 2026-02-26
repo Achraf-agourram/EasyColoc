@@ -25,8 +25,8 @@ class ColocationController extends Controller
     {
         Colocation::create([
             'name' => $request->name,
-            'adress' => $request->adress,
-            'token' => 'kfkfkfkkfkf',
+            'address' => $request->address,
+            'token' => Colocation::generateToken(),
             'owner_id' => Auth::id(),
         ]);
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Colocation extends Model
 {
@@ -24,5 +25,10 @@ class Colocation extends Model
     public function memberships()
     {
         return $this->hasMany(Membership::class);
+    }
+
+    public static function generateToken()
+    {
+        return Str::random(40);
     }
 }

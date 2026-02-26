@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('colocations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("adress");
+            $table->string("address");
             $table->string('token')->unique();
             $table->boolean('is_active')->default(true);
             
