@@ -44,8 +44,8 @@
                             <div class="ms-3 relative" x-data="{ dropdownOpen: false }">
                                 <button @click="dropdownOpen = !dropdownOpen" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                     <div class="flex items-center">
-                                        <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center mr-2 shadow-sm">
-                                            <img src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de profil">
+                                        <div class="w-8 h-8 flex items-center justify-center mr-2 shadow-sm">
+                                            <img class="rounded-full object-cover" src="{{ asset('storage/' . auth()->user()->photo) }}" alt="photo de profil">
                                         </div>
                                         {{ Auth::user()->firstName }}
                                     </div>
@@ -94,5 +94,16 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script>
+            function toggleJoinModal() {
+                const modal = document.getElementById('joinModal');
+                if (modal.classList.contains('hidden')) {
+                    modal.classList.remove('hidden');
+                } else {
+                    modal.classList.add('hidden');
+                }
+            }
+        </script>
     </body>
 </html>

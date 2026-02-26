@@ -99,7 +99,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black shadow-inner" title="{{ $roommate->person->firstName }}">
-                                        <img src="{{ asset('storage/' . $roommate->person->photo) }}" alt="{{ $roommate->person->firstName }}">
+                                        <img class="rounded-full object-cover" src="{{ asset('storage/' . $roommate->person->photo) }}" alt="{{ $roommate->person->firstName }}">
                                     </div>
                                     <div>
                                         <p class="text-sm font-bold text-gray-900">{{ Auth::user()->name }}</p>

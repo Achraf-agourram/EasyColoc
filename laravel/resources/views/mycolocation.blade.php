@@ -78,12 +78,37 @@
                         Créer ma colocation
                     </a>
 
-                    <button
+                    <button onclick="toggleJoinModal()"
                     class="inline-flex items-center px-8 py-4 bg-indigo-600 border border-transparent rounded-xl font-bold text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150 shadow-lg shadow-indigo-100">
                         Rejoindre une colocation
                     </button>
                 </div>
 
+            </div>
+        </div>
+
+        <div id="joinModal" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-gray-900 bg-opacity-75" onclick="toggleJoinModal()"></div>
+
+            <div class="relative flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden">
+                    <form method="POST" action="/join">
+                        @csrf
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-gray-900 italic mb-2">Code d'invitation</h3>
+                            <p class="text-sm text-gray-500 mb-6">Entrez le jeton reçu pour rejoindre la colocation.</p>
+                            
+                            <input type="text" name="token" required
+                                class="w-full px-4 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:border-indigo-600 outline-none text-center text-2xl font-mono uppercase tracking-widest"
+                                placeholder="CODE-123">
+                        </div>
+
+                        <div class="bg-gray-50 p-6 flex justify-end space-x-3">
+                            <button type="button" onclick="toggleJoinModal()" class="px-6 py-3 font-bold text-gray-500">Annuler</button>
+                            <button type="submit" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg">Valider</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     @endif
