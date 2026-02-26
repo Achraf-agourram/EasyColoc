@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColocationRequest;
+use App\Models\Colocation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ColocationController extends Controller
 {
@@ -21,6 +23,13 @@ class ColocationController extends Controller
 
     public function createColocation (StoreColocationRequest $request)
     {
-        return "validated";
+        Colocation::create([
+            'name' => $request->name,
+            'adress' => $request->adress,
+            'token' => 'kfkfkfkkfkf',
+            'owner_id' => Auth::id(),
+        ]);
+
+        return redirect('/mycolocation');
     }
 }
