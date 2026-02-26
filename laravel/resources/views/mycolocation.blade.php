@@ -1,6 +1,6 @@
 <x-app-layout>
     
-    @if($activeMembership->isNotEmpty())
+    @if($activeMembership)
         <div class="py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
                 
@@ -15,7 +15,7 @@
                     <div class="p-8 pt-12 relative">
                         <div class="mb-8">
                             <h1 class="text-3xl font-black text-gray-900 tracking-tight mb-2">
-                                appartement
+                                {{ $activeMembership->colocation->name }}
                             </h1>
                             
                             <div class="flex items-start text-gray-500 bg-gray-50 p-4 rounded-xl border border-gray-100">
@@ -24,7 +24,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                                 <p class="text-lg leading-relaxed">
-                                    address
+                                    {{ $activeMembership->colocation->address }}
                                 </p>
                             </div>
                         </div>
