@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="py-12">
+    <!--div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <div class="mb-8">
@@ -33,6 +33,59 @@
                 </button>
             </div>
 
+        </div>
+    </div-->
+
+    <div class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                
+                <div class="h-32 bg-indigo-600 w-full flex items-center px-8">
+                    <div class="h-20 w-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-4xl">
+                        🏠
+                    </div>
+                </div>
+
+                <div class="p-8 pt-12 relative">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-black text-gray-900 tracking-tight mb-2">
+                            appartement
+                        </h1>
+                        
+                        <div class="flex items-start text-gray-500 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <svg class="w-6 h-6 mr-3 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.244a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <p class="text-lg leading-relaxed">
+                                address
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2 mb-10">
+                        <span class="flex h-3 w-3 rounded-full bg-green-500"></span>
+                        <span class="text-sm font-bold text-gray-600 uppercase tracking-widest">Colocation Active</span>
+                    </div>
+
+                    <hr class="border-gray-100 mb-8">
+
+                    <div class="flex flex-wrap gap-4">
+                        <button class="flex-1 bg-indigo-600 text-white text-center py-4 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
+                            Gérer les Dépenses
+                        </button>
+                        
+                        <button class="flex-1 bg-white text-indigo-600 border-2 border-indigo-600 text-center py-4 rounded-xl font-bold hover:bg-indigo-50 transition">
+                            Modifier les infos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-6 text-center text-sm text-gray-400 italic">
+                Vous êtes actuellement dans la colocation "appartement".
+            </p>
         </div>
     </div>
 </x-app-layout>
