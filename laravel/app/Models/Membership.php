@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Membership extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     
     protected $fillable = [
         'role',
+        'joinedAt',
+        'user_id',
+        'colocation_id',
     ];
 
     public function person()

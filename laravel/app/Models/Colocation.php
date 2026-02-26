@@ -12,7 +12,7 @@ class Colocation extends Model
     
     protected $fillable = [
         'name',
-        'adress',
+        'address',
         'token',
         'owner_id',
     ];

@@ -10,6 +10,7 @@ class Person extends Model
     use HasFactory;
     
     protected $fillable = [
+        'isOwner',
         'user_id',
     ];
 

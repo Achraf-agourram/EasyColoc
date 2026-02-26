@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColocationRequest;
 use App\Models\Colocation;
+use App\Models\Membership;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,12 +26,21 @@ class ColocationController extends Controller
 
     public function createColocation (StoreColocationRequest $request)
     {
-        Colocation::create([
+        $createdColocation = Colocation::create([
             'name' => $request->name,
             'address' => $request->address,
             'token' => Colocation::generateToken(),
             'owner_id' => Auth::id(),
         ]);
+
+        Membership::create([
+            'role' => 'owner',
+            'joinedAt' => Carbon::today(),
+            'user_id' => Auth::id(),
+            'colocation_id' => $createdColocation->id,
+        ]);
+
+        if (Auth::user()->person) Auth::user()->person->update(['isOwner' => true]);
 
         return redirect('/mycolocation');
     }
