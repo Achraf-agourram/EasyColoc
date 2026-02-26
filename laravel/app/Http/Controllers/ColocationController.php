@@ -48,4 +48,9 @@ class ColocationController extends Controller
 
         return redirect('/mycolocation');
     }
+
+    public function currentColocation ($token)
+    {
+        return view('currentcolocation');
+    }
 }

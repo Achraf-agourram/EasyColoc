@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mycolocation', [ColocationController::class, 'mycolocation'])->name('mycolocation');
     Route::get('/mycolocation/new', [ColocationController::class, 'colocationForm']);
     Route::post('/addColocation', [ColocationController::class, 'createColocation']);
+    Route::get('/colocation/{token}', [ColocationController::class, 'currentColocation']);
 });
 
 require __DIR__.'/auth.php';
