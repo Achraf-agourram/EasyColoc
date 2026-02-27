@@ -13,6 +13,8 @@ class Membership extends Model
     protected $fillable = [
         'role',
         'joinedAt',
+        'isActive',
+        'balance',
         'user_id',
         'colocation_id',
     ];

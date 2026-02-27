@@ -17,6 +17,7 @@ return new class extends Migration
             $table->dateTime('joinedAt');
             $table->dateTime('leftAt')->nullable();
             $table->boolean('isActive')->default(true);
+            $table->float('balance')->default(0);
 
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('colocation_id')->constrained('colocations')->cascadeOnDelete();
