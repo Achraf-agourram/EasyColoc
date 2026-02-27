@@ -3,12 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
+use App\Models\Membership;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
     public function join (Request $request)
     {
-        return Colocation::where('token', $request->token)->firstOrFail();
+        $colocationToJoin = Colocation::where('token', $request->token)->firstOrFail();
+        
+        Membership::create([
+            'role' => 'member',
+            'joinedAt' => Carbon::today(),
+            'user_id' => Auth::id(),
+            'colocation_id' => $colocationToJoin->id,
+        ]);
+
+        return redirect('/colocation/'.$request->token);
     }
 }
