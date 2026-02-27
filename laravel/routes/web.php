@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/colocation/{token}', [ColocationController::class, 'currentColocation']);
     Route::post('/join', [MembershipController::class, 'join']);
     Route::post('/addCategory', [CategoryController::class, 'add']);
+    Route::post('/addExpense', [ExpenseController::class, 'add']);
 });
 
 require __DIR__.'/auth.php';

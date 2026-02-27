@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('date');
             
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('colocation_id')->constrained('colocations')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });

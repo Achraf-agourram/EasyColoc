@@ -12,7 +12,10 @@ class Expense extends Model
     protected $fillable = [
         'title',
         'amount',
-        'category',
+        'date',
+        'user_id',
+        'colocation_id',
+        'category_id',
     ];
 
     public function person()
@@ -28,5 +31,10 @@ class Expense extends Model
     public function credits()
     {
         return $this->hasMany(Credit::class);
+    }
+
+    public function colocation()
+    {
+        return $this->belongsTo(Colocation::class);
     }
 }

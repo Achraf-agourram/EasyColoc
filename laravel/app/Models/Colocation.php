@@ -32,6 +32,11 @@ class Colocation extends Model
         return $this->hasMany(Category::class);
     }
 
+    public function expenses ()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
     public static function generateToken()
     {
         return Str::random(40);
