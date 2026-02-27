@@ -28,18 +28,19 @@
 
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link href="#" class="font-bold">
-                                    {{ __('Colocations') }}
+                                    Colocations
                                 </x-nav-link>
                                 <x-nav-link href="#" class="font-bold">
-                                    {{ __('Dépenses') }}
+                                    Dépenses
                                 </x-nav-link>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
+                        <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4" id="profileInfoContainer">
                             <div class="flex items-center bg-green-50 px-3 py-1 rounded-full border border-green-100">
                                 <span class="text-xs font-black text-green-700 uppercase mr-1">Réputation:</span>
-                                <span class="text-sm font-bold text-green-600">{{ Auth::user()->reputation }}</span> </div>
+                                <span class="text-sm font-bold text-green-600">{{ Auth::user()->reputation }}</span>
+                            </div>
 
                             <div class="ms-3 relative" x-data="{ dropdownOpen: false }">
                                 <button @click="dropdownOpen = !dropdownOpen" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-bold rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -84,7 +85,7 @@
                 <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-white border-t border-gray-100">
                     <div class="pt-2 pb-3 space-y-1">
                         <x-responsive-nav-link href="#">
-                            {{ __('Dashboard') }}
+                            Dashboard
                         </x-responsive-nav-link>
                     </div>
                 </div>
@@ -94,28 +95,5 @@
                 {{ $slot }}
             </main>
         </div>
-
-        <script>
-            function toggleJoinModal() {
-                const modal = document.getElementById('joinModal');
-                if (modal.classList.contains('hidden')) {
-                    modal.classList.remove('hidden');
-                } else {
-                    modal.classList.add('hidden');
-                }
-            }
-            function toggleCategoryModal() {
-                const modal = document.getElementById('categoryModal');
-                modal.classList.toggle('hidden');
-            }
-            function toggleExpenseModal() {
-                const modal = document.getElementById('expenseModal');
-                modal.classList.toggle('hidden');
-                
-                if (!modal.classList.contains('hidden')) {
-                    document.getElementById('expense_title').focus();
-                }
-            }
-        </script>
     </body>
 </html>

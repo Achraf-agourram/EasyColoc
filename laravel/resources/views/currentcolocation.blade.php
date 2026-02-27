@@ -224,4 +224,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let balance = @json($membership->balance);
+
+        let parent = document.getElementById('parentDiv');
+        parent.insertAdjacentHTML('afterbegin', `
+            <div class="flex items-center bg-green-50 px-3 py-1 rounded-full border border-green-100">
+                <span class="text-xs font-black text-green-700 uppercase mr-1">Solde:</span>
+                <span class="text-sm font-bold text-green-600">${balance} $</span>
+            </div>
+        `);
+
+        function toggleJoinModal() {
+            const modal = document.getElementById('joinModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+        function toggleCategoryModal() {
+            const modal = document.getElementById('categoryModal');
+            modal.classList.toggle('hidden');
+        }
+        function toggleExpenseModal() {
+            const modal = document.getElementById('expenseModal');
+            modal.classList.toggle('hidden');
+            
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('expense_title').focus();
+            }
+        }
+    </script>
 </x-app-layout>
