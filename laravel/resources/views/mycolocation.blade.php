@@ -112,4 +112,15 @@
             </div>
         </div>
     @endif
+
+    <script>
+        function toggleJoinModal() {
+            const modal = document.getElementById('joinModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
 </x-app-layout>

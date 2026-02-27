@@ -236,14 +236,6 @@
             </div>
         `);
 
-        function toggleJoinModal() {
-            const modal = document.getElementById('joinModal');
-            if (modal.classList.contains('hidden')) {
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
-        }
         function toggleCategoryModal() {
             const modal = document.getElementById('categoryModal');
             modal.classList.toggle('hidden');
