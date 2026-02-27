@@ -51,7 +51,7 @@ class ColocationController extends Controller
 
     public function currentColocation ($token)
     {
-        $colocation = Colocation::with('memberships.person')->where('token', $token)->where('is_active', true)->firstOrFail();
+        $colocation = Colocation::with(['categories', 'memberships.person'])->where('token', $token)->where('is_active', true)->firstOrFail();
         $membership = auth()->user()->memberships()->where('isActive', true)->firstOrFail();
 
         if ($membership->colocation_id === $colocation->id) {

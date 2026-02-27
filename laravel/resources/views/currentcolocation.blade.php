@@ -14,7 +14,7 @@
                     </button>
                 @endif
 
-                <button class="bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 text-sm">
+                <button onclick="toggleExpenseModal()" class="bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 text-sm">
                     + Nouvelle Dépense
                 </button>
             </div>
@@ -168,6 +168,58 @@
                         <button type="button" onclick="toggleCategoryModal()" class="px-4 py-2 font-bold text-gray-500">Annuler</button>
                         <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-xl shadow-md hover:bg-indigo-700 transition">
                             Créer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="expenseModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-75" onclick="toggleExpenseModal()"></div>
+
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden">
+                <form method="POST" action="/addExpense">
+                    @csrf
+                    
+                    <div class="p-8">
+                        <h3 class="text-2xl font-black text-gray-900 italic mb-6">💸 Ajouter une dépense</h3>
+                        
+                        <div class="space-y-5">
+                            <div>
+                                <label for="title" class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Titre de la dépense</label>
+                                <input type="text" name="title" id="expense_title" required
+                                    class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 focus:border-indigo-600 outline-none transition"
+                                    placeholder="Ex: Courses Carrefour, Loyer...">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="amount" class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Montant (€)</label>
+                                    <input type="number" step="0.01" name="amount" required
+                                        class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 focus:border-indigo-600 outline-none transition"
+                                        placeholder="0.00">
+                                </div>
+
+                                <div>
+                                    <label for="category_id" class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Catégorie</label>
+                                    <select name="category_id" required
+                                            class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 focus:border-indigo-600 outline-none transition appearance-none">
+                                        <option value="">Choisir...</option>
+                                        @foreach($colocation->categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 flex justify-end space-x-3">
+                        <button type="button" onclick="toggleExpenseModal()" class="px-6 py-3 font-bold text-gray-500">Annuler</button>
+                        <button type="submit" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition">
+                            Enregistrer
                         </button>
                     </div>
                 </form>

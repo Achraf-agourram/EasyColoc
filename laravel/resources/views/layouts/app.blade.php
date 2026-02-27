@@ -108,6 +108,14 @@
                 const modal = document.getElementById('categoryModal');
                 modal.classList.toggle('hidden');
             }
+            function toggleExpenseModal() {
+                const modal = document.getElementById('expenseModal');
+                modal.classList.toggle('hidden');
+                
+                if (!modal.classList.contains('hidden')) {
+                    document.getElementById('expense_title').focus();
+                }
+            }
         </script>
     </body>
 </html>
