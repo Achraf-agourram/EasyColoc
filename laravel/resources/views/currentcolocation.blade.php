@@ -8,6 +8,12 @@
             </div>
             
             <div class="flex space-x-3">
+                @if($membership->role === 'owner')
+                    <button onclick="toggleCategoryModal()" class="bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 text-sm">
+                        + Ajouter categorie
+                    </button>
+                @endif
+
                 <button class="bg-indigo-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 text-sm">
                     + Nouvelle Dépense
                 </button>
@@ -137,6 +143,35 @@
                 @endif
             </div>
 
+        </div>
+    </div>
+
+    <div id="categoryModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-75" onclick="toggleCategoryModal()"></div>
+
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+                <form method="POST" action="/addCategory">
+                    @csrf
+                    <div class="p-8">
+                        <h3 class="text-xl font-black text-gray-900 mb-6 italic">🏷️ Nouvelle Catégorie</h3>
+                        
+                        <div>
+                            <label for="name" class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-2">Nom de la catégorie</label>
+                            <input type="text" name="name" id="name" required autofocus
+                                class="w-full px-4 py-3 rounded-xl border-2 border-gray-100 bg-gray-50 focus:border-indigo-600 outline-none transition"
+                                placeholder="Ex: Électricité, Internet...">
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 flex justify-end space-x-3">
+                        <button type="button" onclick="toggleCategoryModal()" class="px-4 py-2 font-bold text-gray-500">Annuler</button>
+                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-xl shadow-md hover:bg-indigo-700 transition">
+                            Créer
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </x-app-layout>

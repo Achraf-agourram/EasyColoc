@@ -104,6 +104,10 @@
                     modal.classList.add('hidden');
                 }
             }
+            function toggleCategoryModal() {
+                const modal = document.getElementById('categoryModal');
+                modal.classList.toggle('hidden');
+            }
         </script>
     </body>
 </html>
