@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mycolocation/new', [ColocationController::class, 'colocationForm']);
     Route::post('/addColocation', [ColocationController::class, 'createColocation']);
     Route::get('/colocation/{token}', [ColocationController::class, 'currentColocation']);
+    Route::post('/join', [MembershipController::class, 'join']);
 });
 
 require __DIR__.'/auth.php';
