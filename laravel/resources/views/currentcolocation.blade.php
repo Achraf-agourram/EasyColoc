@@ -126,13 +126,15 @@
                     @endif
                 </div>
 
-                <div class="bg-red-50 rounded-2xl p-4 border border-red-100">
-                    <p class="text-[10px] text-red-800 font-black uppercase mb-2">Attention</p>
-                    <p class="text-[10px] text-red-600 leading-tight mb-3">Quitter une colocation avec une dette active impactera votre réputation (-1).</p>
-                    <button class="w-full py-2 bg-white text-red-600 text-xs font-bold rounded-lg border border-red-200 hover:bg-red-100 transition">
-                        Quitter la colocation
-                    </button>
-                </div>
+                @if($membership->role !== 'owner')
+                    <div class="bg-red-50 rounded-2xl p-4 border border-red-100">
+                        <p class="text-[10px] text-red-800 font-black uppercase mb-2">Attention</p>
+                        <p class="text-[10px] text-red-600 leading-tight mb-3">Quitter une colocation avec une dette active impactera votre réputation (-1).</p>
+                        <button class="w-full py-2 bg-white text-red-600 text-xs font-bold rounded-lg border border-red-200 hover:bg-red-100 transition">
+                            Quitter la colocation
+                        </button>
+                    </div>
+                @endif
             </div>
 
         </div>
