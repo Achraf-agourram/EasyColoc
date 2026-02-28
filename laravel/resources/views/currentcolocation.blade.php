@@ -228,7 +228,7 @@
     <script>
         let balance = @json($membership->balance);
 
-        let parent = document.getElementById('parentDiv');
+        let parent = document.getElementById('profileInfoContainer');
         parent.insertAdjacentHTML('afterbegin', `
             <div class="flex items-center bg-green-50 px-3 py-1 rounded-full border border-green-100">
                 <span class="text-xs font-black text-green-700 uppercase mr-1">Solde:</span>
