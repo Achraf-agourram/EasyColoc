@@ -43,9 +43,11 @@
                                         <div class="flex items-center space-x-4">
                                             <span class="text-lg font-black text-gray-900">{{ $credit->amount }}$</span>
                                             @if ($credit->person->id === Auth::id())
-                                                <button class="bg-indigo-600 text-white text-[10px] uppercase tracking-tighter px-3 py-2 rounded-lg font-bold hover:bg-indigo-700">
-                                                    Marquer Payé
-                                                </button>
+                                                <form action="/pay" method="get">
+                                                    <button name="credit" value="{{ $credit->id }}" class="bg-indigo-600 text-white text-[10px] uppercase tracking-tighter px-3 py-2 rounded-lg font-bold hover:bg-indigo-700">
+                                                        Marquer Payé
+                                                    </button>
+                                                </form>
                                             @endif
                                         </div>
                                     </div>
