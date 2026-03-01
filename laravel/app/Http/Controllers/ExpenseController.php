@@ -37,9 +37,10 @@ class ExpenseController extends Controller
             ]);
 
             $mate->decrement('balance', $amountToPay);
+            $myMembership->increment('balance', $amountToPay);
+            
         }
 
-        $myMembership->increment('balance', $amountToPay);
 
         return redirect()->back();
     }
