@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\CreditController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/join', [MembershipController::class, 'join']);
     Route::post('/addCategory', [CategoryController::class, 'add']);
     Route::post('/addExpense', [ExpenseController::class, 'add']);
+    Route::get('/pay', [CreditController::class, 'pay']);
 });
 
 require __DIR__.'/auth.php';
