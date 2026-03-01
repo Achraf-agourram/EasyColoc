@@ -29,23 +29,31 @@
                         <h3 class="font-black text-gray-800 uppercase text-xs tracking-widest">⚖️ Qui doit à qui ?</h3>
                         <span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">Calcul Automatique</span>
                     </div>
+                    
                     <div class="p-6">
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
-                                <div class="flex items-center space-x-3">
-                                    <span class="font-bold text-gray-700">Thomas</span>
-                                    <span class="text-indigo-400">➡️</span>
-                                    <span class="font-bold text-gray-900 underline decoration-indigo-300">Moi</span>
+                    @foreach($colocation->expenses as $expense)
+                        @foreach($expense->credits as $credit)
+                                <div class="mb-2">
+                                    <div class="flex items-center justify-between p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="font-bold text-gray-700">{{ $credit->person->firstName }}</span>
+                                            <span class="text-indigo-400">➡️</span>
+                                            <span class="font-bold text-gray-900 underline decoration-indigo-300">{{ $expense->person->firstName }}</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <span class="text-lg font-black text-gray-900">{{ $credit->amount }}$</span>
+                                            @if ($credit->person->id === Auth::id())
+                                                <button class="bg-indigo-600 text-white text-[10px] uppercase tracking-tighter px-3 py-2 rounded-lg font-bold hover:bg-indigo-700">
+                                                    Marquer Payé
+                                                </button>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="text-lg font-black text-gray-900">24,50 €</span>
-                                    <button class="bg-indigo-600 text-white text-[10px] uppercase tracking-tighter px-3 py-2 rounded-lg font-bold hover:bg-indigo-700">
-                                        Marquer Payé
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                    @endforeach
                     </div>
+                    
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">

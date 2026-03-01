@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColocationRequest;
 use App\Models\Colocation;
+use App\Models\Credit;
 use App\Models\Membership;
 use App\Models\User;
 use Carbon\Carbon;
@@ -51,15 +52,11 @@ class ColocationController extends Controller
 
     public function currentColocation ($token)
     {
-        $colocation = Colocation::with(['categories', 'expenses.person', 'expenses.category','memberships.person'])->where('token', $token)->where('is_active', true)->firstOrFail();
-        $membership = auth()->user()->memberships()->where('isActive', true)->firstOrFail();
+        $colocation = Colocation::with(['categories', 'expenses.credits.person', 'expenses.person', 'expenses.category', 'memberships.person'])->where('token', $token)->where('is_active', true)->firstOrFail();
+        $membership = auth()->user()->memberships()->where('isActive', true)->where('colocation_id', $colocation->id)->firstOrFail();
+        $roommates = $colocation->memberships;
 
-        if ($membership->colocation_id === $colocation->id) {
 
-            $roommates = $colocation->memberships;
-            return view('currentcolocation', compact(['colocation', 'membership', 'roommates']));
-        }
-
-        abort(404);
+        return view('currentcolocation', compact(['colocation', 'membership', 'roommates']));
     }
 }
