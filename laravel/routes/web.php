@@ -5,6 +5,7 @@ use App\Http\Controllers\ColocationController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/addCategory', [CategoryController::class, 'add']);
     Route::post('/addExpense', [ExpenseController::class, 'add']);
     Route::get('/pay', [CreditController::class, 'pay']);
+    Route::get('/quit', [PersonController::class, 'quit']);
 });
 
 require __DIR__.'/auth.php';
