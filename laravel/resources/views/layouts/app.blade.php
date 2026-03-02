@@ -21,17 +21,14 @@
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <div class="shrink-0 flex items-center">
-                                <a href="#" class="text-2xl hover:opacity-80 transition">
+                                <div class="text-2xl hover:opacity-80 transition">
                                     🏠 <span class="font-black text-indigo-600 ml-1">ColocApp</span>
-                                </a>
+                                </div>
                             </div>
 
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link href="#" class="font-bold">
+                                <x-nav-link href="/mycolocation" class="font-bold">
                                     Colocations
-                                </x-nav-link>
-                                <x-nav-link href="#" class="font-bold">
-                                    Dépenses
                                 </x-nav-link>
                             </div>
                         </div>
