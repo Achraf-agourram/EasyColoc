@@ -13,6 +13,7 @@ class PersonController extends Controller
         $myMembership = auth()->user()->memberships()->with('colocation.owner')->where('isActive', true)->firstOrFail();
 
         if ($myMembership->role === 'owner') return redirect()->back()->withErrors('Owner ne peut pas quitter la colocation !');
+        if ((int)$myMembership->balance > 0) return redirect()->back()->withErrors('Vous ne pouvez pas quitter la colocation sans que les autres membres vous payent !');
 
         $myCredits = auth()->user()->credits()->with('expense')->where('is_payed', false)->get();
         $colocationOwnerMembership = $myMembership->colocation->owner->memberships()->where('isActive', true)->firstOrFail();
@@ -28,6 +29,6 @@ class PersonController extends Controller
         auth()->user()->decrement('reputation', 1);
         $myMembership->update(['balance' => 0, 'isActive' => false, 'leftAt' => Carbon::today()]);
 
-        return redirect('/mycolocation')->withErrors('Vous avez quitter la colocation');
+        return redirect('/mycolocation')->withErrors('Vous avez quitté la colocation');
     }
 }
