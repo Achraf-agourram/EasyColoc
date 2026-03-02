@@ -33,6 +33,7 @@
                     <div class="p-6">
                     @foreach($colocation->expenses as $expense)
                         @foreach($expense->credits as $credit)
+                            @if (!$credit->is_payed)
                                 <div class="mb-2">
                                     <div class="flex items-center justify-between p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
                                         <div class="flex items-center space-x-3">
@@ -52,6 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            @endif
                         @endforeach
                     @endforeach
                     </div>

@@ -18,7 +18,7 @@ class CreditController extends Controller
         $payerMembership->increment('balance', $creditToPay->amount);
         $payeeMembership->decrement('balance', $creditToPay->amount);
 
-        $creditToPay->delete();
+        $creditToPay->update(['is_payed' => true]);
 
         return redirect()->back();
     }
