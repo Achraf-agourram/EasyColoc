@@ -113,22 +113,24 @@
                     <div class="space-y-6">
 
                         @foreach ($roommates as $roommate)
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black shadow-inner" title="{{ $roommate->person->firstName }}">
-                                        <img class="rounded-full object-cover" src="{{ asset('storage/' . $roommate->person->photo) }}" alt="{{ $roommate->person->firstName }}">
+                            @if ($roommate->isActive)
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-black shadow-inner" title="{{ $roommate->person->firstName }}">
+                                            <img class="rounded-full object-cover" src="{{ asset('storage/' . $roommate->person->photo) }}" alt="{{ $roommate->person->firstName }}">
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] text-indigo-500 font-black uppercase tracking-widest">
+                                                {{ $roommate->role }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p class="text-[10px] text-indigo-500 font-black uppercase tracking-widest">
-                                            {{ $roommate->role }}
-                                        </p>
+                                    <div class="text-right">
+                                        <p class="text-xs font-black text-green-600">{{ $roommate->person->reputation }} ⭐</p>
+                                        <p class="text-[8px] text-gray-400 uppercase font-bold">Réputation</p>
                                     </div>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-xs font-black text-green-600">{{ $roommate->person->reputation }} ⭐</p>
-                                    <p class="text-[8px] text-gray-400 uppercase font-bold">Réputation</p>
-                                </div>
-                            </div>
+                            @endif
                         @endforeach
 
                     </div>

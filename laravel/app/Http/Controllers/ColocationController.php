@@ -56,7 +56,6 @@ class ColocationController extends Controller
         $membership = auth()->user()->memberships()->where('isActive', true)->where('colocation_id', $colocation->id)->firstOrFail();
         $roommates = $colocation->memberships;
 
-
         return view('currentcolocation', compact(['colocation', 'membership', 'roommates']));
     }
 }
